@@ -1,4 +1,6 @@
 import express from 'express' //metodos de express para configurar y levantar servidores
+import 'dotenv/config.js'
+import './config/database.js'
 import path from 'path' //metodos para trabajar con rutas de archivos y directorios
 import logger from 'morgan' //middleware que registra peticiones y errores HTTP
 import indexRouter from './routes/index.js' //rutas de index
