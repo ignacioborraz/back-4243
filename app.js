@@ -4,7 +4,6 @@ import './config/database.js'
 import path from 'path' //metodos para trabajar con rutas de archivos y directorios
 import logger from 'morgan' //middleware que registra peticiones y errores HTTP
 import indexRouter from './routes/index.js' //rutas de index
-import usersRouter from './routes/users.js' //rutas de users
 import { __dirname } from './utils.js' //direccion de la carpeta raíz del proyecto
 
 const app = express() //método para levantar un servidor
@@ -21,6 +20,5 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //routes
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
 
 export default app
