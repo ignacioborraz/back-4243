@@ -9,6 +9,7 @@
   },
   "type": "module",
   "dependencies": {
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "ejs": "~2.6.1",
