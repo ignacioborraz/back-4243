@@ -1,5 +1,7 @@
 import express from 'express'
+import postSchema from '../schemas/categories.js'
 import Category from './../models/Category.js'
+import validator from './../middlewares/validator.js'
 let router = express.Router()
 
 router.get(
@@ -14,6 +16,10 @@ router.get(
 
 router.post(
     '/',
+    /* nombreDeUnMiddleware, */
+    /* otroMiddle, */
+    /* losqueQuieras, */
+    validator(postSchema),
     async (req,res) => {
         try {
             let category = await Category.create(req.body)
