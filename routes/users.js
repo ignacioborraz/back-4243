@@ -1,4 +1,6 @@
 import express from 'express'
+import postSchema from '../schemas/users.js'
+
 let router = express.Router()
 
 /* GET users listing. */
