@@ -41,7 +41,7 @@ router.get('/', /* passport.authenticate(), */isAuthor, authorIsActive, function
  */
 
 router.use(
-  '/users', /* endpoint del recurso que quiero controlar */
+  '/auth', /* endpoint del recurso que quiero controlar */
   userRouter /* las rutas del recurso que quiero controlar con ese endpoint */
 )
 router.use('/categories',categoriesRouter)
