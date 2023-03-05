@@ -1,13 +1,37 @@
 import userRouter from './users.js'
 import categoriesRouter from './categories.js'
+import createError from 'http-errors';
 //import booksRouter from './books.js'
+import {authorIsActive, isAuthor} from '../middleware/author.js'
 
 import express from 'express'
 let router = express.Router()
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'API DE PRUEBA' })
+router.get('/', /* passport.authenticate(), */isAuthor, authorIsActive, function(req, res, next) {
+  // res.render('index', { title: 'API DE PRUEBA' })
+  // try {
+    
+  //   // Peticion get para obtener un usuario
+  //   let user = {
+  //     name: 'Igna'
+  //   }; // Esto puede venir de la base de datos === let pepito = undefined
+
+  //   if(user) {
+  //     return res.status(200).json({
+  //       user: user
+  //     })
+  //   }
+
+  //   return next(createError(404, 'Usuario no encontrado'))
+
+  // } catch(err) {
+  //   next(createError(500, 'Algo salio mal'))
+  // }
+
+  res.status(200).json({
+    message: 'Llegaste hasta el controlador'
+  })
 })
 
 /**
@@ -17,7 +41,7 @@ router.get('/', function(req, res, next) {
  */
 
 router.use(
-  '/users', /* endpoint del recurso que quiero controlar */
+  '/auth', /* endpoint del recurso que quiero controlar */
   userRouter /* las rutas del recurso que quiero controlar con ese endpoint */
 )
 router.use('/categories',categoriesRouter)
