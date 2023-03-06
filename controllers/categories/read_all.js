@@ -1,12 +1,16 @@
-import Category from "../../models/Category"
+import Category from "../../models/Category.js"
 
 const controller = {
 
-    countDocs: async (req,res) => {
-        let count = await Category.estimatedDocumentCount()
-        return res
-            .status(200)
-            .send(count)
+    all: async (req,res,next) => {
+        try {
+            let all = await Category.find()
+            return res
+                .status(200)
+                .json({ categories: all })
+        } catch(err) {
+            next(err)
+        }
     }
 
 }
