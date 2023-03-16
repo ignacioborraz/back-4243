@@ -23,8 +23,4 @@ app.use('/', indexRouter)
 app.use(notFoundEndpoint)
 app.use(errorHandler)
 
-app.use(errorNotFound)
-
-app.use(errorHandler)
-
 export default app
