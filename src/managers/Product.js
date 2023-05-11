@@ -81,4 +81,4 @@ let data = async() => {
     await manager.update_product(1,{stock:8})
     await manager.destroy_product(4)
 }
-data()
+// data()
