@@ -44,6 +44,7 @@ movies_router.get(
         try {
             let quantity = await Movie.find({ price: {$gt: 40} })
             let stats = await Movie.find({ price: {$gt: 40} }).explain('executionStats')
+            //console.log(stats)
             return res.status(200).json({
                 success: true,
                 quantity: quantity.length,
