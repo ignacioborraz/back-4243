@@ -38,6 +38,22 @@ movies_router.get(
         }
     }
 )
+movies_router.get(
+    '/query-stats',
+    async(req,res,next) => {
+        try {
+            let quantity = await Movie.find({ price: {$gt: 40} })
+            let stats = await Movie.find({ price: {$gt: 40} }).explain('executionStats')
+            return res.status(200).json({
+                success: true,
+                quantity: quantity.length,
+                time: stats.executionStats.executionTimeMillis
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+)
 movies_router.put(
     '/:id',
     async(req,res,next)=> {
