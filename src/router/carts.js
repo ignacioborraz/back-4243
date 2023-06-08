@@ -1,6 +1,7 @@
 import { Router } from "express"
 import Cart from "../models/Cart.js"
 import User from "../models/User.js"
+import { Types } from "mongoose"
 
 const carts_router = Router()
 
@@ -44,6 +45,24 @@ carts_router.get('/users/:uid',async(req,res,next)=> {
             success:true,
             response:all
         })
+    } catch (error) {
+        next(error)
+    }
+})
+//READ THE BILL FROM ONE USER
+carts_router.get('/bills/:uid', async(req,res,next)=> {
+    try {
+        let all = await Cart.aggregate([
+            { $match: { user_id: new Types.ObjectId(req.params.uid) } },
+            { $lookup: { from: 'movies', localField: 'movie_id', foreignField: '_id', as: 'movie_id' } },
+            { $replaceRoot: { newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$movie_id", 0 ] }, "$$ROOT" ] } } },
+            { $set: { total: { $multiply: ['$quantity','$price'] } }},
+            { $project: { movie_id: 0, quantity: 0, price: 0, __v: 0, active: false } },
+            { $group: { _id:'$user_id', sum: { $sum: '$total' } } },
+            { $project: { _id:0,user_id:'$_id',sum:'$sum' } },
+            { $merge: { into: 'bills' } }
+        ])
+        return res.status(200).json({ success: true, response: all })
     } catch (error) {
         next(error)
     }

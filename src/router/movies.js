@@ -17,27 +17,18 @@ movies_router.post(
         }
     }
 )
-movies_router.get(
-    '/',
-    async(req,res,next) => {
-        try {
-            let all = await Movie.find()
-            if (all) {
-                return res.status(200).json({
-                    success: true,
-                    data: all
-                })
-            } else {
-                return res.status(404).json({
-                    success: false,
-                    message: 'not found'
-                })
-            }
-        } catch (error) {
-            next(error)
-        }
+movies_router.get('/', async(req,res,next)=> {
+    let page = 1
+    let limit = 5
+    if (req.query.page > 0) { page = req.query.page }
+    if (req.query.limit > 0) { limit = req.query.limit }
+    try {
+        let all = await Movie.paginate({},{ limit,page })
+        return res.status(200).json({ success: true, response: all })
+    } catch (error) {
+        next(error)
     }
-)
+})
 movies_router.get(
     '/query-stats',
     async(req,res,next) => {
