@@ -18,12 +18,8 @@ movies_router.post(
     }
 )
 movies_router.get('/', async(req,res,next)=> {
-    let page = 1
-    let limit = 5
-    if (req.query.page > 0) { page = req.query.page }
-    if (req.query.limit > 0) { limit = req.query.limit }
     try {
-        let all = await Movie.paginate({},{ limit,page })
+        let all = await Movie.find()
         return res.status(200).json({ success: true, response: all })
     } catch (error) {
         next(error)
