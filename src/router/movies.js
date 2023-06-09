@@ -18,8 +18,16 @@ movies_router.post(
     }
 )
 movies_router.get('/', async(req,res,next)=> {
+    let page = req.query.page ?? 1
+    let limit = req.query.limit ?? 5
+    let title = req.query.title ?? ''
+    title = new RegExp(title,'i')   //expresion regular incluir
+    console.log(title);
     try {
-        let all = await Movie.find()
+        let all = await Movie.paginate(
+            { title },              //objeto con queries para filtros
+            { limit,page }          //limit y page de la paginacion
+        )
         return res.status(200).json({ success: true, response: all })
     } catch (error) {
         next(error)
