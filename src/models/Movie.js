@@ -1,4 +1,5 @@
 import { model,Schema } from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2'
 
 let collection = 'movies'
 let schema = new Schema({
@@ -7,5 +8,6 @@ let schema = new Schema({
     price: { type:Number,required:true,index:true }
 })
 
+schema.plugin(mongoosePaginate)
 let Movie = model(collection,schema)
 export default Movie

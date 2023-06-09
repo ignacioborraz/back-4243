@@ -52,8 +52,24 @@ carts_router.get('/users/:uid',async(req,res,next)=> {
 //READ THE BILL FROM ONE USER
 carts_router.get('/bills/:uid', async(req,res,next)=> {
     try {
-        let all = await Cart.find()
-        return res.status(200).json({ success: true, response: all })
+        //let all = await Cart.find()
+        let data = await Cart.aggregate([
+            { $match: { user_id: new Types.ObjectId(req.params.uid) } },                                //filtro carritos por usuario
+            { $lookup: { foreignField:'_id', from:'movies', localField:'movie_id', as:'movie_id' } },   //populeo los datos del usuario
+            { $replaceRoot: {                                                                           //reemplazo la ubicación de los elementos del array populado
+                newRoot: {
+                    $mergeObjects: [
+                        { $arrayElemAt: [ "$movie_id",0 ] },
+                        "$$ROOT"
+                    ]
+                }
+            }},
+            { $set: { total: { $multiply: ['$quantity','$price'] } } },             //multiplicar precio de cada pelicula por cantidad comprada
+            { $group: { _id:'$user_id', sum: { $sum:'$total' } } },                 //agrupo todas las peliculas y reduzco(sumo) todos los totales
+            { $project: { _id:0,user_id:'$_id',sum:'$sum' } },                      //limpio el objeto
+            { $merge: { into: 'bills' } }                                           //defino una nueva colección para guardar los datos
+        ])
+        return res.status(200).json({ success: true, response: data })
     } catch (error) {
         next(error)
     }
