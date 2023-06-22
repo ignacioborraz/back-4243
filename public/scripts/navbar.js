@@ -1,6 +1,6 @@
 let options = [
-    { title:"New Pizza",to:"/new.html",id:'new_pizza' },
-    { title:"Pizzas",to:"/pizzas.html",id:'pizzas' },
+    { title:"New Movie",to:"/new.html",id:'new_movie' },
+    { title:"Movies",to:"/movies.html",id:'movies' },
     { title:"Register",to:"/register.html",id:'register' },
     { title:"Log In",to:"/login.html",id:'login' },
     { title:"Sign Out",to:"#",id:'signout' }

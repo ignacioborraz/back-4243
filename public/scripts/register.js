@@ -1,4 +1,4 @@
-document.getElementById('register').addEventListener('click',(event)=>{
+document.getElementById('register_button').addEventListener('click',(event)=>{
     event.preventDefault()
     let data = {
         name: document.querySelector('#name').value,
@@ -7,7 +7,7 @@ document.getElementById('register').addEventListener('click',(event)=>{
         email: document.querySelector('#mail').value,
         password: document.querySelector('#password').value,
     }
-    console.log(data)
+    //console.log(data)
     fetch(`/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
