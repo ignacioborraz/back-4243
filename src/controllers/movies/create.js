@@ -1,8 +1,8 @@
-import User from '../../models/User.js'
+import Movie from '../../models/Movie.js'
 
 export default async function (req,res,next) {
     try {
-        await User.create(req.user)
+        await Movie.create(req.body)
         return res.status(201).json({
             success:true,
             message:'created'
