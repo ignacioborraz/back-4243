@@ -4,21 +4,10 @@ import morgan from 'morgan'
 import error_handler from './middlewares/error_handler.js'
 import not_found_handler from './middlewares/not_found_handler.js'
 import index_router from './router/index.js'
-import session from 'express-session'
-import mongoStore from 'connect-mongo'
 
 const server = express()
 
 //middlewares
-server.use(session({
-    secret: process.env.SECRET_SESSION,
-    resave: true,
-    saveUninitialized: true,
-    store: mongoStore.create({
-        mongoUrl: process.env.LINK_MONGO,
-        ttl: 10000
-    })
-}))
 server.use('/',express.static('public'))
 server.use(express.json())
 server.use(express.urlencoded({ extended:true }))

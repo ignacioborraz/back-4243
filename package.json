@@ -16,7 +16,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js",
+    "users": "node ./src/models/data/users.js",
+    "categories": "node ./src/models/data/categories.js",
+    "products": "node ./src/models/data/products.js",
+    "states": "node ./src/models/data/states.js",
+    "carts": "node ./src/models/data/carts.js"
   },
   "repository": {
     "type": "git",
