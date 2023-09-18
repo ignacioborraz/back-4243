@@ -1,16 +1,6 @@
-import server from "./app.js"
-import { connect } from "mongoose"
+import server from "./app.js";
 
-const port = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
+const ready = () => console.log("server ready on port " + PORT);
 
-const ready = async()=> {
-    try {
-        console.log('server ready on port '+port)
-        await connect(process.env.MONGO_URI)
-        console.log('connected to database')
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-server.listen(port,ready)
+server.listen(PORT, ready);

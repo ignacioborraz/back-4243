@@ -1,21 +1,29 @@
-import express from 'express'
-import 'dotenv/config.js'
-import morgan from 'morgan'
-import error_handler from './middlewares/error_handler.js'
-import not_found_handler from './middlewares/not_found_handler.js'
-import index_router from './router/index.js'
+import "dotenv/config.js";
+import express from "express";
+import morgan from "morgan";
+import { connect } from "mongoose";
 
-const server = express()
+import { __dirname } from "./utils.js";
+
+import router from "./routes/index.js";
+
+import errorHandler from "./middlewares/errorHandler.js";
+import notFoundHandler from "./middlewares/notFoundHandler.js";
+
+const server = express();
 
 //middlewares
-server.use('/',express.static('public'))
-server.use(express.json())
-server.use(express.urlencoded({ extended:true }))
-server.use(morgan('dev'))
+server.use(morgan("dev"));
+server.use("/", express.static("public"));
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+server.use("/", router);
+server.use(errorHandler);
+server.use(notFoundHandler);
 
-//endpoints
-server.use('/api',index_router)
-server.use(error_handler)
-server.use(not_found_handler)
+//database
+connect(process.env.LINK_DB)
+  .then(() => console.log("database connected"))
+  .catch((err) => console.log(err));
 
-export default server
+export default server;
