@@ -1,8 +1,11 @@
-import { Router } from "express"
-//import api_router from './api/index.js'
+import MyRouter from "./router.js";
+import ToysRouter from "./api/toys.router.js";
 
-const index_router = Router()
+const toys = new ToysRouter()
 
-//index_router.use('/api',api_router) //enrutador de rutas que respondan con json (datos)
-
-export default index_router
+export default class IndexRouter extends MyRouter {
+  init() {
+    this.read('/',(req,res)=>res.status(200).send('TOY STORE API'))
+    this.use('/toys',toys.getRouter())
+  }
+}

@@ -5,10 +5,11 @@ import { connect } from "mongoose";
 
 import { __dirname } from "./utils.js";
 
-import router from "./routes/index.js";
-
 import errorHandler from "./middlewares/errorHandler.js";
 import notFoundHandler from "./middlewares/notFoundHandler.js";
+
+import IndexRouter from "./routes/index.js";
+const router = new IndexRouter()
 
 const server = express();
 
@@ -17,7 +18,7 @@ server.use(morgan("dev"));
 server.use("/", express.static("public"));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
-server.use("/", router);
+server.use("/api", router.getRouter());
 server.use(errorHandler);
 server.use(notFoundHandler);
 

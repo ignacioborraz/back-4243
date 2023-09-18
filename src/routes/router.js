@@ -22,47 +22,27 @@ export default class MyRouter {
     res.sendSuccessCreate = (payload) => res.status(201).json(payload);
     res.sendSuccess = (payload) => res.status(200).json(payload);
     res.sendNotFound = () =>
-      res.status(404).json({ success: false, response: "not found" });
-    res.sendNoAuthenticatedError = (error) =>
-      res.status(401).json({ status: "error", error });
-    res.sendNoAuthorizatedError = (error) =>
-      res.status(403).json({ status: "error", error });
+      res.status(404).json({ response: null, message: "not found" });
     return next();
   };
   //create
-  post(path, policies, ...cbs) {
-    this.router.post(
-      path,
-      this.responses,
-      this.handlePolicies(policies),
-      this.applyCb(cbs)
-    );
+  create(path, ...cbs) {
+    this.router.post(path, this.applyCb(cbs));
   }
   //read
-  read(path, policies, ...cbs) {
-    this.router.get(
-      path,
-      this.responses,
-      this.handlePolicies(policies),
-      this.applyCb(cbs)
-    );
+  read(path, ...cbs) {
+    this.router.get(path, this.applyCb(cbs));
   }
   //update
-  put(path, policies, ...cbs) {
-    this.router.put(
-      path,
-      this.responses,
-      this.handlePolicies(policies),
-      this.applyCb(cbs)
-    );
+  update(path, ...cbs) {
+    this.router.put(path, this.applyCb(cbs));
   }
   //destroy
-  delete(path, policies, ...cbs) {
-    this.router.delete(
-      path,
-      this.responses,
-      this.handlePolicies(policies),
-      this.applyCb(cbs)
-    );
+  destroy(path, ...cbs) {
+    this.router.delete(path, this.applyCb(cbs));
+  }
+  //use
+  use(path, ...cbs) {
+    this.router.use(path, this.responses, this.applyCb(cbs));
   }
 }
