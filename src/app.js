@@ -9,7 +9,7 @@ import errorHandler from "./middlewares/errorHandler.js";
 import notFoundHandler from "./middlewares/notFoundHandler.js";
 
 import IndexRouter from "./routes/index.js";
-const router = new IndexRouter()
+const router = new IndexRouter();
 
 const server = express();
 

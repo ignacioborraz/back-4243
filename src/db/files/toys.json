@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "hola1234",
+    "title": "title updated 2",
+    "description": "description 2",
+    "stock": 10,
+    "url_photo": "url_photo 2",
+    "price": 1500
+  },
+  {
+    "_id": "hola1238",
+    "title": "title 5",
+    "description": "description 5",
+    "stock": 10,
+    "url_photo": "url_photo 2",
+    "price": 1500
+  }
+]
