@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js -p 7000 --mode development",
+    "dev": "nodemon ./src/server.js -p 8008 --mode development",
     "listeners": "node ./src/config/listeners.js"
   },
   "repository": {
