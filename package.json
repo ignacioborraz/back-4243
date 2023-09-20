@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js -p 7000 --mode development",
+    "listeners": "node ./src/config/listeners.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "commander": "^11.0.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.2.0",
