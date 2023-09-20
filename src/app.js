@@ -1,9 +1,9 @@
-import "dotenv/config.js";
+import config from "./config/config.js";
 import express from "express";
 import morgan from "morgan";
 import { connect } from "mongoose";
 
-import { __dirname } from "./utils.js";
+import { __dirname } from "./config/utils.js";
 
 import errorHandler from "./middlewares/errorHandler.js";
 import notFoundHandler from "./middlewares/notFoundHandler.js";
@@ -23,8 +23,8 @@ server.use(errorHandler);
 server.use(notFoundHandler);
 
 //database
-connect(process.env.LINK_DB)
-  .then(() => console.log("database connected"))
+connect(config.link_db)
+  .then(() => console.log("database: connected"))
   .catch((err) => console.log(err));
 
 export default server;
