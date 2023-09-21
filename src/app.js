@@ -1,12 +1,12 @@
-import config from "./config/config.js";
 import express from "express";
 import morgan from "morgan";
-import cors from "cors";
 import cookieParser from "cookie-parser";
 import expressSession from "express-session";
 import MongoStore from "connect-mongo";
 import passport from "passport";
+import cors from "cors"
 
+import config from "./config/config.js";
 import { __dirname } from "./config/utils.js";
 import MongoConnect from "./config/Mongo.js";
 
@@ -20,14 +20,14 @@ const router = new IndexRouter();
 const server = express();
 
 //middlewares
-server.use(cookieParser(process.env.SECRET_COOKIE));
+server.use(cookieParser(config.SECRET_COOKIE));
 server.use(
   expressSession({
     store: MongoStore.create({
-      mongoUrl: process.env.LINK_DB,
+      mongoUrl: config.LINK_DB,
       ttl: 60 * 60 * 24 * 7,
     }),
-    secret: process.env.SECRET_SESSION,
+    secret: config.SECRET_SESSION,
     resave: true,
     saveUninitialized: true,
   })
@@ -35,17 +35,17 @@ server.use(
 inicializePassport();
 server.use(passport.initialize());
 server.use(passport.session());
+server.use(cors())
 server.use(morgan("dev"));
 server.use("/", express.static("public"));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
-server.use(cors());
 server.use("/api", router.getRouter());
 server.use(errorHandler);
 server.use(notFoundHandler);
 
 //database
-const mongo = new MongoConnect(config.link_db);
-mongo.connect_db();
+const mongo1 = new MongoConnect(config.LINK_DB)
+mongo1.connect_mongo()
 
 export default server;

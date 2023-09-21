@@ -1,11 +1,11 @@
 import { Command } from "commander";
 
-const program = new Command(); //inicializamos los comandos
+const program = new Command();
 
 program
-  .option("-p <port>", "port", 8080)
-  .option("--mode <mode>", "environment", "development");
+  .option("-p <port>", "port", 7000)
+  .option("--mode <mode>", "mode", "dev");
 
-program.parse(); //para cerrar la configuración de comandos
+program.parse();
 
 export default program.opts();
