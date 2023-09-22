@@ -1,25 +1,27 @@
 import { connect } from "mongoose";
 
 export default class MongoConnect {
+  static count = 0;
   constructor(link) {
     this.link = link;
-  }
-  async connect_db() {
-    try {
-      await connect(this.link);
-      console.log("database: connected");
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  single() {
+    ++MongoConnect.count;
     if (typeof MongoConnect.instance === "object") {
-      console.log("error connection: you already connected to another db");
       return MongoConnect.instance;
     } else {
       MongoConnect.instance = this;
-      console.log("new connection");
       return this;
+    }
+  }
+  async connect_mongo() {
+    connect(this.link)
+      .then(() => console.log("database: connected"))
+      .catch((err) => console.log(err));
+  }
+  single() {
+    if (MongoConnect.count > 1) {
+      console.log("se crearon " + (MongoConnect.count - 1) + "sin efecto");
+    } else {
+      console.log("primera instancia creada");
     }
   }
 }

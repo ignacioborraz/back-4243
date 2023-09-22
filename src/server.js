@@ -1,11 +1,14 @@
 import server from "./app.js";
-import options from './config/arguments.js'
+import program from "./config/arguments.js";
+
+const port = program.p;
+const environment = program.mode;
 
 //console.log(options);
-const PORT = process.env.PORT || options.p
+const PORT = process.env.PORT || port;
 const ready = () => {
-    console.log('mode: '+options.mode);
-    console.log("server ready on port: " + PORT);
-}
+  console.log("mode: " + environment);
+  console.log("server ready on port: " + PORT);
+};
 
 server.listen(PORT, ready);

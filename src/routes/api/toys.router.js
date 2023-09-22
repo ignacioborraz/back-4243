@@ -23,7 +23,7 @@ export default class ToysRouter extends MyRouter {
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("products");
         }
       } catch (error) {
         next(error);
@@ -36,7 +36,7 @@ export default class ToysRouter extends MyRouter {
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("product");
         }
       } catch (error) {
         next(error);
@@ -50,7 +50,7 @@ export default class ToysRouter extends MyRouter {
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("product");
         }
       } catch (error) {
         next(error);
@@ -63,7 +63,7 @@ export default class ToysRouter extends MyRouter {
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("product");
         }
       } catch (error) {
         next(error);

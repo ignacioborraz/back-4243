@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js -p 7000 --mode development",
+    "start": "node ./src/server.js --mode prod",
+    "dev": "nodemon ./src/server.js -p 8080",
     "listeners": "node ./src/config/listeners.js"
   },
   "repository": {

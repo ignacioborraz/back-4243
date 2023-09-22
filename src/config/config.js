@@ -1,16 +1,13 @@
 import dotenv from "dotenv";
-import options from "./arguments.js";
+import command from "./arguments.js";
 
-const environment = options.mode;
-const env =
-  environment === "development" ? "./.env.development" : "./.env.production";
-dotenv.config({
-  path: env,
-});
+const environment = command.mode;
+const path = environment === "dev" ? "./.env.dev" : "./.env.prod";
+dotenv.config({ path });
 
 export default {
-  link_db: process.env.LINK_DB,
-  secret_cookie: process.env.SECRET_COOKIE,
-  secret_session: process.env.SECRET_SESSION,
-  secret_key: process.env.SECRET_KEY,
+  LINK_DB: process.env.LINK_DB,
+  SECRET_COOKIE: process.env.SECRET_COOKIE,
+  SECRET_SESSION: process.env.SECRET_SESSION,
+  SECRET_KEY: process.env.SECRET_KEY,
 };
