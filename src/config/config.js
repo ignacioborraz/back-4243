@@ -2,12 +2,7 @@ import dotenv from "dotenv";
 import command from "./arguments.js";
 
 const environment = command.mode;
-const path =
-  environment === "dev"
-    ? "./.env.dev"
-    : environment === "prod"
-    ? "./.env.prod"
-    : "./.env.test";
+const path = environment === "dev" ? "./.env.dev" : "./.env.prod";
 dotenv.config({ path });
 
 export default {

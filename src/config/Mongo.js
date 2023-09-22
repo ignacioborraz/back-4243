@@ -19,7 +19,7 @@ export default class MongoConnect {
   }
   single() {
     if (MongoConnect.count > 1) {
-      console.log("ya creada una instancia");
+      console.log("se crearon " + (MongoConnect.count - 1) + "sin efecto");
     } else {
       console.log("primera instancia creada");
     }

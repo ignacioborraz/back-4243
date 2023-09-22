@@ -72,20 +72,20 @@ export default class AuthRouter extends MyRouter {
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("users");
         }
       } catch (error) {
         next(error);
       }
     });
-    this.read("/", async (req, res, next) => {
+    this.read("/me", passport.authenticate("jwt"), async (req, res, next) => {
       try {
         let { mail } = req.user;
         let response = await controller.readOne(mail);
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("user");
         }
       } catch (error) {
         next(error);
@@ -99,7 +99,7 @@ export default class AuthRouter extends MyRouter {
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("user");
         }
       } catch (error) {
         next(error);
@@ -112,7 +112,7 @@ export default class AuthRouter extends MyRouter {
         if (response) {
           return res.sendSuccess(response);
         } else {
-          return res.sendNotFound();
+          return res.sendNotFound("user");
         }
       } catch (error) {
         next(error);
