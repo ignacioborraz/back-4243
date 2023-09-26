@@ -1,4 +1,4 @@
-import User from "../db/models/user.model.js";
+import User from "../dao/mongo/models/user.model.js";
 
 export default async function (req, res, next) {
   try {

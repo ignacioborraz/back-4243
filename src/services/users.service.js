@@ -1,7 +1,7 @@
 //CAPA DE SERVICIOS
 //brindar servicios segun la persistencia
 
-import AuthMongo from "../db/mongo/users.mongo.js";
+import AuthMongo from "../dao/mongo/users.mongo.js";
 
 export default class AuthService {
   constructor() {

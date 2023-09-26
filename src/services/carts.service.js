@@ -1,7 +1,7 @@
 //CAPA DE SERVICIOS
 //brindar servicios segun la persistencia
 //HOY DIA ES UN INTERMEDIARIO (entre persistencia y control)
-import CartMongo from "../db/mongo/carts.mongo.js";
+import CartMongo from "../dao/mongo/carts.mongo.js"
 
 export default class CartsService {
   constructor() {

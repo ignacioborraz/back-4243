@@ -1,6 +1,6 @@
 import passport from "passport";
 import jwt from "passport-jwt";
-import User from "../db/models/user.model.js";
+import User from "../dao/mongo/models/user.model.js";
 
 export default function () {
   passport.serializeUser((user, done) => done(null, user._id));

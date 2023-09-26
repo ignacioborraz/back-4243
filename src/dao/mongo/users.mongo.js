@@ -1,7 +1,7 @@
 //CAPA DE PERSISTENCIA (mongo)
 //es la encargada de realizar el CRUD
 
-import User from "../models/user.model.js";
+import User from "./models/user.model.js";
 
 export default class AuthMongo {
   constructor() {}

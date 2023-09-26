@@ -45,7 +45,7 @@ server.use(errorHandler);
 server.use(notFoundHandler);
 
 //database
-const mongo1 = new MongoConnect(config.LINK_DB)
-mongo1.connect_mongo()
+const mongo = new MongoConnect(config.LINK_DB)
+mongo.connect_mongo()
 
 export default server;

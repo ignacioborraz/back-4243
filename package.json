@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/server.js --mode prod",
-    "dev": "nodemon ./src/server.js -p 8080",
+    "dev": "nodemon ./src/server.js",
+    "fs": "node ./src/server.js -p 8000 --persistence FS",
+    "memory": "node ./src/server.js -p 9000 --persistence MEMORY",
     "listeners": "node ./src/config/listeners.js"
   },
   "repository": {

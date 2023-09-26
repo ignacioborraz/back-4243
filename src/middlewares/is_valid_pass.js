@@ -1,5 +1,5 @@
 import { compareSync } from "bcrypt";
-import User from "../db/models/user.model.js";
+import User from "../dao/mongo/models/user.model.js";
 
 export default async function (req, res, next) {
   let password_from_form = req.body.password;
