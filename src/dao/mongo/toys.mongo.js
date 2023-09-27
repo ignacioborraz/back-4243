@@ -1,7 +1,7 @@
 //CAPA DE PERSISTENCIA (mongo)
 //es la encargada de realizar el CRUD
 
-import Toy from "../models/toy.model.js";
+import Toy from "./models/toy.model.js";
 
 export default class ToyMongo {
   constructor() {}

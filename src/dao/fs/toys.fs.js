@@ -6,7 +6,7 @@ import fs from "fs";
 export default class Product {
   constructor() {
     this.toys = [];
-    this.path = "./src/db/files/toys.json";
+    this.path = "./src/dao/fs/files/toys.json";
     this.init();
   }
   init() {
@@ -20,6 +20,7 @@ export default class Product {
   }
   async createModel(data) {
     //data debe venir con _id en este caso
+    //console.log(data);
     this.toys.push(data);
     let data_json = JSON.stringify(this.toys, null, 2);
     await fs.promises.writeFile(this.path, data_json);

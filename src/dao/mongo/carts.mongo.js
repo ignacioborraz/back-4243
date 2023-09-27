@@ -1,7 +1,7 @@
 //CAPA DE PERSISTENCIA (mongo)
 //es la encargada de realizar el CRUD
 
-import Cart from "../models/cart.model.js";
+import Cart from "./models/cart.model.js";
 
 export default class CartMongo {
   constructor() {}
