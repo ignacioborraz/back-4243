@@ -7,12 +7,10 @@ let dao = {}; //objeto donde voy a tener los diferentes modelos SEGUN la presist
 switch (args.persistence) {
   case "MEMORY":
     console.log("memory: connected");
-    const { default: ToyMemory } = await import("../dao/memory/toys.memory.js");
-    //const { default: CartMemory } = await import("../dao/memory/carts.memory.js")
-    const { default: UserMemory } = await import(
-      "../dao/memory/users.memory.js"
-    );
-    dao = { Toy: ToyMemory, Cart: "CartMemory", User: UserMemory };
+    const { default: ToyMemory } = await import("./memory/toys.mem.js");
+    const { default: CartMemory } = await import("../dao/memory/carts.mem.js");
+    const { default: UserMemory } = await import("./memory/users.mem.js");
+    dao = { Toy: ToyMemory, Cart: CartMemory, User: UserMemory };
     break;
   case "FS":
     console.log("file system: connected");

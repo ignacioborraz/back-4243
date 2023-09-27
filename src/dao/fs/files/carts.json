@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "toy_id": {
+      "title": "otro",
+      "description": "description 6",
+      "stock": 1,
+      "url_photo": "url_photo 6",
+      "price": 150,
+      "createdAt": "2023-09-26T02:40:10.024Z",
+      "updatedAt": "2023-09-26T02:40:10.024Z",
+      "__v": 0,
+      "_id": "c80fce70abd6d7f8c619647c"
+    },
+    "user_id": {
+      "name": "igna",
+      "mail": "igna@coder.com",
+      "password": "$2b$10$lYZIsYaae3VdhglJHUHn6OlDap.WfxG6reeem0QCklrbWmUaA3Wi6",
+      "url_photo": "https://wallpapers.com/images/hd/weavile-with-cat-mouth-kobmppcrvf52qesk.jpg",
+      "role": 0,
+      "createdAt": "2023-09-26T17:51:09.017Z",
+      "updatedAt": "2023-09-26T17:51:09.017Z",
+      "__v": 0,
+      "_id": "42633fda226d1d11950a4c22"
+    },
+    "state": "pending",
+    "quantity": 7,
+    "createdAt": "2023-09-27T15:49:55.465Z",
+    "updatedAt": "2023-09-27T15:53:46.174Z",
+    "__v": 2,
+    "_id": "36a242993e7967cf7cdadc8b"
+  }
+]
