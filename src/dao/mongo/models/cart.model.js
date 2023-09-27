@@ -5,8 +5,12 @@ let schema = new Schema(
   {
     toy_id: { type: Types.ObjectId, ref: "toys", required: true },
     user_id: { type: Types.ObjectId, ref: "users", required: true },
-    quantity: { type: Number, required: true },
-    state: { type: String, enum: ['pending','paid','delivered'], default: 'pending' },
+    quantity: { type: Number, default: 1 },
+    state: {
+      type: String,
+      enum: ["pending", "paid", "delivered"],
+      default: "pending",
+    },
   },
   { timestamps: true }
 );

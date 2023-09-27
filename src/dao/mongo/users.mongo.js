@@ -36,7 +36,7 @@ export default class AuthMongo {
     }
   }
   async readOne(mail) {
-    let one = await User.findOne({ mail }, "-password");
+    let one = await User.findOne({ mail });
     if (one) {
       return {
         message: "user found!",
@@ -46,13 +46,19 @@ export default class AuthMongo {
       return null;
     }
   }
-  async update(mail, data) {
-    let one = await User.findOneAndUpdate(
-      { mail },
-      data,
-      { new: true },
-      "-password"
-    );
+  async readById(id) {
+    let one = await User.findById(id);
+    if (one) {
+      return {
+        message: "user found!",
+        response: one,
+      };
+    } else {
+      return null;
+    }
+  }
+  async updateOne(mail, data) {
+    let one = await User.findOneAndUpdate({ mail }, data, { new: true });
     if (one) {
       return {
         message: "user updated!",
@@ -62,8 +68,8 @@ export default class AuthMongo {
       return null;
     }
   }
-  async destroy(mail) {
-    let one = await User.findOneAndDelete({ mail }, "-password");
+  async destroyOne(mail) {
+    let one = await User.findOneAndDelete({ mail });
     if (one) {
       return {
         message: "user destroyed!",

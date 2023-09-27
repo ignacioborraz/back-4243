@@ -1,12 +1,18 @@
 import passport from "passport";
 import jwt from "passport-jwt";
-import User from "../dao/mongo/models/user.model.js";
+import dao from "../dao/factory.js";
+const { User } = dao;
 
 export default function () {
-  passport.serializeUser((user, done) => done(null, user._id));
+  passport.serializeUser((user, done) => {
+    //console.log(user._id);
+    return done(null, user._id);
+  });
   passport.deserializeUser(async (id, done) => {
-    const user = await User.findById(id);
-    return done(null, user);
+    //console.log(id);
+    const model = new User();
+    const user = await model.readById(id);
+    return done(null, user.response);
   });
   passport.use(
     "jwt",
@@ -19,10 +25,12 @@ export default function () {
       },
       async (payload, done) => {
         try {
-          console.log(payload);
-          let one = await User.findOne({ mail: payload.mail }, "-password");
-          if (one) {
-            done(null, one);
+          //console.log(payload);
+          const model = new User();
+          let response = await model.readOne(payload.mail);
+          if (response) {
+            response.response.password = null;
+            done(null, response.response);
           } else {
             done(null);
           }

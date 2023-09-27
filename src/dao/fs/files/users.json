@@ -1,0 +1,46 @@
+[
+  {
+    "name": "mateo",
+    "mail": "mateo@coder.com",
+    "password": "$2b$10$TRZXbago9ImJmqYF0Jbv7eYwLdjh20N3kqd0zOv8fPaGoB5tCgX.C",
+    "url_photo": "https://wallpapers.com/images/hd/weavile-with-cat-mouth-kobmppcrvf52qesk.jpg",
+    "role": 0,
+    "createdAt": "2023-09-26T17:22:00.364Z",
+    "updatedAt": "2023-09-26T17:22:00.364Z",
+    "__v": 0,
+    "_id": "532f634bed2dffe275ac7ab9"
+  },
+  {
+    "name": "igna",
+    "mail": "igna@coder.com",
+    "password": "$2b$10$lYZIsYaae3VdhglJHUHn6OlDap.WfxG6reeem0QCklrbWmUaA3Wi6",
+    "url_photo": "https://wallpapers.com/images/hd/weavile-with-cat-mouth-kobmppcrvf52qesk.jpg",
+    "role": 0,
+    "createdAt": "2023-09-26T17:51:09.017Z",
+    "updatedAt": "2023-09-26T17:51:09.017Z",
+    "__v": 0,
+    "_id": "42633fda226d1d11950a4c22"
+  },
+  {
+    "name": "florencia",
+    "mail": "florencia@coder.com",
+    "password": "$2b$10$tCZVdopL8G34g8wJRz0T5ed6rrAscjlJK1BM9TpvwjlCJ5OKi8/ui",
+    "url_photo": "https://wallpapers.com/images/hd/weavile-with-cat-mouth-kobmppcrvf52qesk.jpg",
+    "role": 0,
+    "createdAt": "2023-09-26T18:19:01.508Z",
+    "updatedAt": "2023-09-26T18:19:01.508Z",
+    "__v": 0,
+    "_id": "e5f1316f9fe4bf86a1beab83"
+  },
+  {
+    "name": "flor",
+    "mail": "flor@coder.com",
+    "password": "$2b$10$QGRFbcXzk7yV8mrJQuJl1eR3NSyHxB9r/s6c7sS5lR3gNfcUnlKoW",
+    "url_photo": "https://wallpapers.com/images/hd/weavile-with-cat-mouth-kobmppcrvf52qesk.jpg",
+    "role": 0,
+    "createdAt": "2023-09-26T18:53:51.838Z",
+    "updatedAt": "2023-09-26T18:53:51.838Z",
+    "__v": 0,
+    "_id": "78a09be0e4058075e4a00736"
+  }
+]

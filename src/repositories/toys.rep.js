@@ -10,26 +10,20 @@ export default class ToysRepository {
   constructor() {
     this.model = new Toy();
   }
-  createRepository(data) {
-    let dataDto = new ToyDto(data); //reasigno el valor de data con la transformación correspondiente del DTO
+  createRepository = (data) => {
+    let dataDto = new ToyDto(data);
+    //reasigno el valor de data con la transformación correspondiente del DTO
     let response = this.model.createModel(dataDto);
     return response;
-  }
-  readRepositories() {
-    let response = this.model.readModels();
-    return response;
-  }
-  readOneRepository(id) {
-    let response = this.model.readOneModel(id);
-    return response;
-  }
-  updateRepository(id, data) {
+  };
+  readRepositories = () => this.model.readModels();
+  readOneRepository = (id) => this.model.readOneModel(id);
+  updateRepository = (id, data) => {
     data = new ToyUpdDto(data);
+    //reasigno el valor de data con la transformación correspondiente del DTO
+    //se podria hacer en un middleware también (pero no haríamos uso de la capa extra que hemos creado)
     let response = this.model.updateModel(id, data);
     return response;
-  }
-  destroyRepository(id) {
-    let response = this.model.destroyModel(id);
-    return response;
-  }
+  };
+  destroyRepository = (id) => this.model.destroyModel(id);
 }

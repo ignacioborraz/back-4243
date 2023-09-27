@@ -9,15 +9,17 @@ switch (args.persistence) {
     console.log("memory: connected");
     const { default: ToyMemory } = await import("../dao/memory/toys.memory.js");
     //const { default: CartMemory } = await import("../dao/memory/carts.memory.js")
-    //const { default: UserMemory } = await import("../dao/memory/users.memory.js")
-    dao = { Toy: ToyMemory /*, Cart: CartMemory, User: UserMemory */ };
+    const { default: UserMemory } = await import(
+      "../dao/memory/users.memory.js"
+    );
+    dao = { Toy: ToyMemory, Cart: "CartMemory", User: UserMemory };
     break;
   case "FS":
     console.log("file system: connected");
     const { default: ToyFs } = await import("../dao/fs/toys.fs.js");
     const { default: CartFs } = await import("../dao/fs/carts.fs.js");
-    //const { default: UserFs } = await import("../dao/fs/users.fs.js")
-    dao = { Toy: ToyFs, Cart: CartFs /*, User: UserFs */ };
+    const { default: UserFs } = await import("../dao/fs/users.fs.js");
+    dao = { Toy: ToyFs, Cart: CartFs, User: UserFs };
     break;
   default: //"MONGO"
     const mongo = new MongoConnect(config.LINK_DB);

@@ -1,9 +1,11 @@
-import User from "../dao/mongo/models/user.model.js";
+import dao from "../dao/factory.js";
+const { User } = dao;
 
 export default async function (req, res, next) {
   try {
+    const model = new User();
     const { mail } = req.body;
-    let one = await User.findOne({ mail });
+    let one = await model.readOne(mail);
     if (!one) {
       return next();
     } else {
