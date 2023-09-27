@@ -12,10 +12,8 @@ export default class Cart {
     const users = new User();
     const toys = new Toy();
     //data debe venir con _id en este caso
-    console.log(data.toy_id);
     data.user_id = users.readById(data.user_id)?.response;
     data.toy_id = toys.readOneModel(data.toy_id)//?.response;
-    console.log(data);
     this.carts.push(data);
     return {
       message: "product added!",

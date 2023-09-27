@@ -12,7 +12,6 @@ export default class ToysRouter extends MyRouter {
       try {
         let data = req.body;
         let response = await toysController.createController(data);
-        //console.log(response);
         return res.sendSuccessCreate(response);
       } catch (error) {
         next(error);
