@@ -1,4 +1,4 @@
-const not_found_handler = (req, res, next) => {
+export default (req, res, next) => {
   console.log(`not found ${req.method} ${req.url}`);
   return res.json({
     method: req.method,
@@ -6,5 +6,3 @@ const not_found_handler = (req, res, next) => {
     message: "not found",
   });
 };
-
-export default not_found_handler;

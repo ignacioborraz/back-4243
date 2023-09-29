@@ -1,6 +1,8 @@
 import { compareSync } from "bcrypt";
 import dao from "../dao/factory.js";
 const { User } = dao;
+import CustomError from "../config/CustomError.js";
+import errors from "../config/errors.js";
 
 export default async function (req, res, next) {
   let password_from_form = req.body.password;
@@ -13,10 +15,5 @@ export default async function (req, res, next) {
       return next();
     }
   }
-  return res.status(400).json({
-    method: req.method,
-    path: req.url,
-    message: "invalid credentials",
-    response: null,
-  });
+  CustomError.newError(errors.auth);
 }

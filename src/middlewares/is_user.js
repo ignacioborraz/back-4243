@@ -1,5 +1,7 @@
 import dao from "../dao/factory.js";
 const { User } = dao;
+import CustomError from "../config/CustomError.js";
+import errors from "../config/errors.js";
 
 export default async function (req, res, next) {
   try {
@@ -10,12 +12,7 @@ export default async function (req, res, next) {
       req.user = one.response;
       return next();
     } else {
-      return res.status(400).json({
-        method: req.method,
-        path: req.url,
-        message: "invalid credentials",
-        response: null,
-      });
+      CustomError.newError(errors.auth);
     }
   } catch (error) {
     return next(error);

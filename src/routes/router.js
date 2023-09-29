@@ -1,4 +1,6 @@
 import { Router } from "express";
+import CustomError from "../config/CustomError.js";
+import errors from "../config/errors.js";
 
 export default class MyRouter {
   constructor() {
@@ -22,7 +24,7 @@ export default class MyRouter {
     res.sendSuccessCreate = (payload) => res.status(201).json(payload);
     res.sendSuccess = (payload) => res.status(200).json(payload);
     res.sendNotFound = (payload) =>
-      res.status(404).json({ response: null, message: payload + " not found" });
+      CustomError.newError(errors.notFound(payload));
     return next();
   };
   //create
