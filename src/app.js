@@ -1,13 +1,13 @@
 import express from "express";
-import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passport from "passport";
-import cors from "cors"
+import cors from "cors";
 
 import config from "./config/config.js";
 import { __dirname } from "./config/utils.js";
 import sessions from "./config/sessions/factory.js";
 
+import logger from "./middlewares/winston.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import notFoundHandler from "./middlewares/notFoundHandler.js";
 import inicializePassport from "./middlewares/passport.js";
@@ -23,8 +23,8 @@ server.use(sessions);
 inicializePassport();
 server.use(passport.initialize());
 server.use(passport.session());
-server.use(cors())
-server.use(morgan("dev"));
+server.use(cors());
+server.use(logger);
 server.use("/", express.static("public"));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
