@@ -4,7 +4,7 @@ import passport from "passport";
 import cors from "cors";
 
 import config from "./config/config.js";
-import { __dirname } from "./config/utils.js";
+import { __dirname } from "../utils.js";
 import sessions from "./config/sessions/factory.js";
 
 import logger from "./middlewares/winston.js";

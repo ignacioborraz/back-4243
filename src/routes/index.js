@@ -4,13 +4,39 @@ import ToysRouter from "./api/toys.router.js";
 import CartsRouter from "./api/carts.router.js";
 import AuthRouter from "./api/auth.router.js";
 
+import transport from "../config/transport.js";
+import config from "../config/config.js";
+import { __dirname } from "../../utils.js";
+
 const toys = new ToysRouter();
 const carts = new CartsRouter();
 const auth = new AuthRouter();
 
 export default class IndexRouter extends MyRouter {
   init() {
-    this.read("/", (req, res) => res.status(200).send("TOY STORE API"));
+    this.create("/", async (req, res, next) => {
+      try {
+        let to = req.body.to;
+        let subject = req.body.subject;
+        let html = `<img src="cid:foto_prueba">`;
+        await transport.sendMail({
+          from: `CODER <${config.G_MAIL}>`,
+          to,
+          subject,
+          html,
+          attachments: [
+            {
+              filename: "foto.png",
+              path: "ruta de foto (usar utils correctamente)",
+              cid: "foto_prueba",
+            },
+          ],
+        });
+        res.status(200).send("correo enviado correctamente");
+      } catch (error) {
+        next(error);
+      }
+    });
     this.use("/toys", toys.getRouter());
     this.use("/carts", carts.getRouter());
     this.use("/auth", auth.getRouter());
