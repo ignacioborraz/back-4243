@@ -14,7 +14,8 @@ const auth = new AuthRouter();
 
 export default class IndexRouter extends MyRouter {
   init() {
-    this.create("/", async (req, res, next) => {
+    this.read("/", (req, res) => res.status(200).send("TOY STORE API"));
+    this.create("/mail", async (req, res, next) => {
       try {
         let to = req.body.to;
         let subject = req.body.subject;
