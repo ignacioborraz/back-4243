@@ -1,2 +1,8 @@
 [33mWARN[39m: POST /api/auth/register - invalid credentials - 8:44:25 AM
 [33mWARN[39m: POST /api/auth/register - invalid credentials - 8:47:42 AM
+[31mERROR[39m: GET /api/ - EISDIR: illegal operation on a directory, read - 6:27:00 PM
+[31mERROR[39m: GET /api/ - ENOENT: no such file or directory, open '/foto.png' - 6:28:27 PM
+[31mERROR[39m: GET /api/ - ENOENT: no such file or directory, open '/public/foto.png' - 6:28:45 PM
+[31mERROR[39m: GET /api/ - ENOENT: no such file or directory, open '/home/igna/Documents/repos/toy-store/src/config/foto.png' - 6:29:37 PM
+[31mERROR[39m: GET /api/ - ENOENT: no such file or directory, open '/home/igna/Documents/repos/toy-store/src/config../foto.png' - 6:30:31 PM
+[31mERROR[39m: GET /api/ - ENOENT: no such file or directory, open '/home/igna/Documents/repos/toy-store../foto.png' - 6:32:10 PM
