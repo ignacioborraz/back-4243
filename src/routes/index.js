@@ -49,5 +49,15 @@ export default class IndexRouter extends MyRouter {
         return res.status(200).json({ response }); //enviamos la respuesta al cliente
       });
     });
+    this.read("/simple", (req, res) => {
+      let total = 1;
+      for (let i = 1; i < 100; i++) total = i * i;
+      res.status(200).send({ total });
+    });
+    this.read("/complex", (req, res) => {
+      let total = 1;
+      for (let i = 1; i < 100000000; i++) total = (i++) * i;
+      res.status(200).send({ total });
+    });
   }
 }

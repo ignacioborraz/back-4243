@@ -1,0 +1,22 @@
+config:
+  pluggins:
+    metrics-by-endpoint : {}
+  target: http://localhost:7000/api
+  phases:
+    - duration: 20
+      arrivalRate: 10
+scenarios:
+  - name: create read & destroy
+    flow:
+      - log: "create"
+      - post:
+          url: /toys/fake
+          capture: 
+            - json: "$.response.toy_id"
+              as: "fid"
+      - log: "read one"
+      - get:
+          url: /toys/{{fid}}
+      - log: "destroy one"
+      - delete:
+          url: /toys/{{fid}}
