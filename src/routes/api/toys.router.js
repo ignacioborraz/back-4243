@@ -3,6 +3,7 @@
 //es decir aca manejamos REQ y RES
 import MyRouter from "../router.js";
 import ToysController from "../../controllers/toys.controller.js";
+import create_fake_toy from "../../middlewares/create_fake_toy.js";
 
 const toysController = new ToysController();
 
@@ -65,6 +66,15 @@ export default class ToysRouter extends MyRouter {
         } else {
           return res.sendNotFound("product");
         }
+      } catch (error) {
+        next(error);
+      }
+    });
+    this.create("/fake", create_fake_toy, async (req, res, next) => {
+      try {
+        let data = req.fake;
+        let response = await toysController.createController(data);
+        return res.sendSuccessCreate(response);
       } catch (error) {
         next(error);
       }

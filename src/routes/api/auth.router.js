@@ -7,6 +7,7 @@ import is_valid_pass from "../../middlewares/is_valid_pass.js";
 import create_token from "../../middlewares/create_token.js";
 
 import passport from "passport";
+import create_fake_user from "../../middlewares/create_fake_user.js";
 
 export default class AuthRouter extends MyRouter {
   init() {
@@ -111,6 +112,16 @@ export default class AuthRouter extends MyRouter {
         } else {
           return res.sendNotFound("user");
         }
+      } catch (error) {
+        next(error);
+      }
+    });
+    this.create("/fake-register", create_fake_user, async (req, res, next) => {
+      try {
+        let data = req.fake;
+        const controller = new AuthController();
+        let response = await controller.register(data);
+        return res.sendSuccessCreate(response);
       } catch (error) {
         next(error);
       }
