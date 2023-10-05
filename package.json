@@ -5,13 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/server.js --mode prod",
+    "start": "node ./src/server.js --mode PROD",
     "dev": "nodemon ./src/server.js",
-    "fs": "node ./src/server.js -p 8000 --persistence FS",
-    "memory": "node ./src/server.js -p 9000 --persistence MEMORY",
+    "fs": "node ./src/server.js -p 8001 --persistence FS",
+    "memory": "node ./src/server.js -p 9001 --persistence MEMORY",
     "listeners": "node ./src/config/listeners.js",
-    "simple": "artillery quick --count 40 --num 50 'http://localhost:7000/api/simple' -o ./src/tests/performance/simple.json",
-    "complex": "artillery quick --count 40 --num 50 'http://localhost:7000/api/complex' -o ./src/tests/performance/complex.json",
+    "simple": "artillery quick --count 40 --num 50 'http://localhost:7001/api/simple' -o ./src/tests/performance/simple.json",
+    "complex": "artillery quick --count 40 --num 50 'http://localhost:7001/api/complex' -o ./src/tests/performance/complex.json",
     "performance": "artillery run ./config.yaml --output ./src/tests/performance/crd.json",
     "report": "artillery report ./src/tests/performance/crd.json"
   },

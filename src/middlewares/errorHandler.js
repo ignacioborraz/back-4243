@@ -1,11 +1,12 @@
-import logger from "../config/logger.js";
+import loggers from "../config/loggers/factory.js";
+
 export default (error, req, res, next) => {
   let message = `${req.method} ${req.url} - ${
     error.message
   } - ${new Date().toLocaleTimeString()}`;
   `${error.statusCode}`.startsWith("4")
-    ? logger.WARN(message)
-    : logger.ERROR(message);
+    ? loggers.WARN(message)
+    : loggers.ERROR(message);
   return res.status(error.statusCode).json({
     method: req.method,
     path: req.url,

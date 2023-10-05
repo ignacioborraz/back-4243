@@ -1,0 +1,2 @@
+ERROR: DELETE /api/toys/chau - Cast to ObjectId failed for value "chau" (type string) at path "_id" for model "toys" - 11:18:13 AM
+WARN: POST /api/auth/register - invalid credentials - 11:19:06 AM

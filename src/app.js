@@ -7,12 +7,13 @@ import config from "./config/config.js";
 import { __dirname } from "../utils.js";
 import sessions from "./config/sessions/factory.js";
 
-import logger from "./middlewares/winston.js";
+import winston from "./middlewares/winston.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import notFoundHandler from "./middlewares/notFoundHandler.js";
 import inicializePassport from "./middlewares/passport.js";
 
 import IndexRouter from "./routes/index.js";
+
 const router = new IndexRouter();
 
 const server = express();
@@ -23,8 +24,8 @@ server.use(sessions);
 inicializePassport();
 server.use(passport.initialize());
 server.use(passport.session());
-server.use(cors());
-server.use(logger);
+server.use(cors())
+server.use(winston);
 server.use("/", express.static("public"));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
