@@ -52,12 +52,13 @@ export default class IndexRouter extends MyRouter {
     this.read("/simple", (req, res) => {
       let total = 1;
       for (let i = 1; i < 100; i++) total = i * i;
-      res.status(200).send({ total });
+      return res.status(200).send({ total });
     });
     this.read("/complex", (req, res) => {
       let total = 1;
-      for (let i = 1; i < 100000000; i++) total = (i++) * i;
-      res.status(200).send({ total });
+      for (let i = 1; i < 1000000000; i++) total = (i++) * i;
+      console.log(process.pid);
+      return res.status(200).send({ total });
     });
   }
 }
