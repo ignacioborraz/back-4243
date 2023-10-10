@@ -5,15 +5,19 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/server.js --mode PROD",
+    "start": "node ./src/server.js --mode PROD -p 8000",
     "dev": "nodemon ./src/server.js",
-    "fs": "node ./src/server.js -p 8001 --persistence FS",
-    "memory": "node ./src/server.js -p 9001 --persistence MEMORY",
+    "fs": "node ./src/server.js --persistence FS",
+    "memory": "node ./src/server.js --persistence MEMORY",
     "listeners": "node ./src/config/listeners.js",
     "simple": "artillery quick --count 40 --num 50 'http://localhost:7001/api/simple' -o ./src/tests/performance/simple.json",
-    "complex": "artillery quick --count 40 --num 50 'http://localhost:7001/api/complex' -o ./src/tests/performance/complex.json",
+    "complex": "artillery quick --count 40 --num 50 'http://localhost:9000/api/complex' -o ./src/tests/performance/complex.json",
     "performance": "artillery run ./config.yaml --output ./src/tests/performance/crd.json",
-    "report": "artillery report ./src/tests/performance/crd.json"
+    "report": "artillery report ./src/tests/performance/crd.json",
+    "image": "docker build -t prod .",
+    "container": "docker run -p 8888:8000 prod",
+    "image-dev": "docker build -t dev .",
+    "container-dev": "docker run -p 8889:8000 dev"
   },
   "repository": {
     "type": "git",
