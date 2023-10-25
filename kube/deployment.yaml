@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toysdeployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: toys
+      # debe coincidir con el selector del servicio
+  template:
+    metadata:
+      labels:
+        app: toys
+      # debe coincidir con el selector del servicio
+    spec:
+      containers:
+      - name: toys
+        image: ignacioborraz/toysapp:1.0.0
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always

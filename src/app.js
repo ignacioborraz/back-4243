@@ -18,7 +18,6 @@ const router = new IndexRouter();
 
 const server = express();
 
-//middlewares
 server.use(cookieParser(config.SECRET_COOKIE));
 server.use(sessions);
 inicializePassport();
@@ -32,9 +31,5 @@ server.use(express.urlencoded({ extended: true }));
 server.use("/api", router.getRouter());
 server.use(errorHandler);
 server.use(notFoundHandler);
-
-//database
-//const mongo = new MongoConnect(config.LINK_DB)
-//mongo.connect_mongo()
 
 export default server;
