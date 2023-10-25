@@ -14,8 +14,7 @@ RUN npm install
 COPY . .
 
 # Habilitamos un puerto que escuche nuestra computadora
-EXPOSE 8889
-# EXPOSE 8889
+EXPOSE 8080
 
-CMD ["npm", "start"]
-# CMD ["npm", "run", "dev"]
+# CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: toyspod
+spec:
+  containers:
+  - name: toysapp
+    image: ignacioborraz/toysapp:1.0.0

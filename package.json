@@ -14,10 +14,15 @@
     "complex": "artillery quick --count 40 --num 50 'http://localhost:9000/api/complex' -o ./src/tests/performance/complex.json",
     "performance": "artillery run ./config.yaml --output ./src/tests/performance/crd.json",
     "report": "artillery report ./src/tests/performance/crd.json",
-    "image": "docker build -t prod .",
-    "container": "docker run -p 8888:8000 prod",
-    "image-dev": "docker build -t dev .",
-    "container-dev": "docker run -p 8889:8000 dev"
+    "image": "docker build -t toysapp .",
+    "container": "docker run -p 8080:8080 toysapp",
+    "prepair": "docker tag toysapp ignacioborraz/toysapp:1.0.0",
+    "push": "docker push ignacioborraz/toysapp:1.0.0",
+    "mini": "minikube start",
+    "pod": "kubectl apply -f ./kube/pod.yaml",
+    "service": "kubectl apply -f ./kube/service.yaml",
+    "deployment": "kubectl apply -f ./kube/deployment.yaml",
+    "list": "minikube service list"
   },
   "repository": {
     "type": "git",
