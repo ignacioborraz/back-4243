@@ -1,0 +1,140 @@
+components:
+  schemas:
+    Toy:
+      type: object
+      properties:
+        title:
+          description: Name of the toy
+          type: string
+        description:
+          description: Details of the toy
+          type: string          
+        url_photo:
+          description: URL of the toy
+          type: string
+        stock:
+          description: Available stock
+          type: integer
+          format: int64
+        price:
+          description: How much it cost?
+          type: integer
+          format: int64
+      example:
+        title: Car
+        description: Red car
+        url_photo: "www.photo.com/car.png"
+        stock: 1000
+        price: 10
+  responses:
+    createSuccess:
+      type: object
+      properties:
+        response:
+          description: The object id  of the new document
+          type: string
+        message:
+          description: Description of the success
+          type: string
+      example:
+        response: newobjectid
+        message: toy created!
+    createNotFound:
+      type: object
+      properties:
+        method:
+          description: Name of the HTTP method
+          type: string
+        path:
+          description: Name of the endpoint
+          type: string
+        message:
+          description: Description of the error
+          type: string
+      example:
+        method: POST
+        path: /api/toys
+        message: title is required
+    createError:
+      type: object
+      properties:
+        method:
+          description: Name of the HTTP method
+          type: string
+        path:
+          description: Name of the endpoint
+          type: string
+        message:
+          description: Description of the error
+          type: string
+      example:
+        method: POST
+        path: /api/toys
+        message: error
+paths:
+  /api/toys:
+    post:
+      summary: Create a new toy
+      tags:
+        - Toys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/Toy'
+      responses:
+        "201":
+          description: Toy created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#components/responses/createSuccess'
+        "400":
+          description: Properties required
+          content:
+            application/json:
+              schema:
+                $ref: '#components/responses/createNotFound'
+        "500":
+          description: Error Server
+          content:
+            application/json:
+              schema:
+                $ref: '#components/responses/createError'
+  /api/toys/{uid}:
+    get:
+      summary: Obtiene un user
+      tags:
+        - Toys
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        description: ID del usuario que se solicita
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Usuario Encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#components/responses/User'
+    put:
+      summary: actualiza un user a partir del ID
+      tags:
+        - Toys
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        description: ID del usuario que se solicita
+        schema:
+          $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateUser'
