@@ -9,7 +9,7 @@ export default class Toy {
     Toy.toys.push(data);
     return {
       message: "toy created!",
-      response: { toy_id: data._id },
+      response: data._id,
     };
   }
   readModels() {
@@ -17,7 +17,7 @@ export default class Toy {
     if (Toy.toys.length > 0) {
       return {
         message: "toys found!",
-        response: { toys: all },
+        response: all,
       };
     } else {
       return null;

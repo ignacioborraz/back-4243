@@ -26,7 +26,7 @@ export default class Product {
     await fs.promises.writeFile(this.path, data_json);
     return {
       message: "toy created!",
-      response: { toy_id: data._id },
+      response: data._id,
     };
   }
   readModels() {
@@ -34,7 +34,7 @@ export default class Product {
     if (this.toys.length > 0) {
       return {
         message: "toys found!",
-        response: { toys: all },
+        response: all,
       };
     } else {
       return null;

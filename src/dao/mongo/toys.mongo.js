@@ -9,7 +9,7 @@ export default class ToyMongo {
     let one = await Toy.create(data);
     return {
       message: "toy created!",
-      response: { toy_id: one._id },
+      response: one._id,
     };
   }
   async readModels() {
@@ -17,7 +17,7 @@ export default class ToyMongo {
     if (all.length > 0) {
       return {
         message: "toys found!",
-        response: { toys: all },
+        response: all,
       };
     } else {
       return null;
