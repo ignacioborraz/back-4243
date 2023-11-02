@@ -1,2 +1,9 @@
 ERROR: DELETE /api/toys/chau - Cast to ObjectId failed for value "chau" (type string) at path "_id" for model "toys" - 11:18:13 AM
 WARN: POST /api/auth/register - invalid credentials - 11:19:06 AM
+WARN: POST /api/auth/login - invalid credentials - 1:00:32 PM
+WARN: POST /api/auth/login - invalid credentials - 1:01:59 PM
+WARN: POST /api/auth/login - invalid credentials - 1:02:19 PM
+ERROR: POST /api/auth/register - users validation failed: mail: Path `mail` is required. - 1:02:49 PM
+WARN: POST /api/auth/register - invalid credentials - 1:10:40 PM
+ERROR: PUT /api/toys/null - Cast to ObjectId failed for value "null" (type string) at path "_id" for model "toys" - 1:35:45 PM
+ERROR: DELETE /api/toys/null - Cast to ObjectId failed for value "null" (type string) at path "_id" for model "toys" - 1:35:45 PM
