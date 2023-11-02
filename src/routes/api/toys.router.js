@@ -4,12 +4,13 @@
 import MyRouter from "../router.js";
 import ToysController from "../../controllers/toys.controller.js";
 import create_fake_toy from "../../middlewares/create_fake_toy.js";
+import passport from "passport";
 
 const toysController = new ToysController();
 
 export default class ToysRouter extends MyRouter {
   init() {
-    this.create("/", async (req, res, next) => {
+    this.create("/", passport.authenticate("jwt"), async (req, res, next) => {
       try {
         let data = req.body;
         let response = await toysController.createController(data);

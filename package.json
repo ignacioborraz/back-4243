@@ -24,7 +24,8 @@
     "deployment": "kubectl apply -f ./kube/deployment.yaml",
     "list": "minikube service list",
     "mocha": "mocha ./test/mocha",
-    "chai": "mocha ./test/chai"
+    "chai": "mocha ./test/chai",
+    "supertest": "mocha ./test/supertest"
   },
   "repository": {
     "type": "git",
@@ -58,6 +59,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.10",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
   }
 }
